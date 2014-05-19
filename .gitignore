@@ -7,3 +7,6 @@ ants
 
 # ide folders
 nbproject/
+
+# object files
+*.o

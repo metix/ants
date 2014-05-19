@@ -126,6 +126,7 @@ void render()
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+		glColor4f(0.0f, 0.0f, 0.0f, 0.5f);
 		if (fps < (float) FPS * 0.8f)
 			glColor3f(RGB_RED);
 		snprintf(text_buffer, BUFF_SIZE, "fps: %f (%d)", fps, FPS);
