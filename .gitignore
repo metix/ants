@@ -1,0 +1,9 @@
+# executables
+.out
+ants
+
+# binarys
+.bin
+
+# ide folders
+nbproject/
