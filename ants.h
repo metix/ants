@@ -39,8 +39,8 @@ extern ant_t *ants;
 extern food_t *food;
 extern int ants_count;
 extern int food_count;
-extern int field_width;
-extern int field_height;
+extern int field_count_x;
+extern int field_count_y;
 
 /* see graphics.c */
 extern void init_graphics();

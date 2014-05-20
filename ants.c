@@ -9,8 +9,8 @@
 int ants_count = ANTS_COUNT;
 int food_count = FOOD_COUNT;
 
-int field_width = FIELD_WIDTH;
-int field_height = FIELD_HEIGHT;
+int field_count_x = FIELD_WIDTH;
+int field_count_y = FIELD_HEIGHT;
 
 ant_t *ants = NULL;
 food_t *food = NULL;
@@ -32,8 +32,8 @@ point_t delta_pos[DELTA_FIELDS];
 point_t random_pos()
 {
 	point_t p;
-	p.x = rand() % field_width;
-	p.y = rand() % field_height;
+	p.x = rand() % field_count_x;
+	p.y = rand() % field_count_y;
 	return p;
 }
 
@@ -45,19 +45,19 @@ point_t random_destination()
 	switch (side) {
 	case 0:
 		dest.x = -1;
-		dest.y = rand() % field_height;
+		dest.y = rand() % field_count_y;
 		break;
 	case 1:
-		dest.x = field_width;
-		dest.y = rand() % field_height;
+		dest.x = field_count_x;
+		dest.y = rand() % field_count_y;
 		break;
 	case 2:
-		dest.x = rand() % field_width;
+		dest.x = rand() % field_count_x;
 		dest.y = -1;
 		break;
 	case 3:
-		dest.x = rand() % field_width;
-		dest.y = field_height;
+		dest.x = rand() % field_count_x;
+		dest.y = field_count_y;
 		break;
 	}
 	return dest;
@@ -91,7 +91,7 @@ int find_free(point_t pos, point_t *free)
 		p.x = pos.x + delta_pos[i].x;
 		p.y = pos.y + delta_pos[i].y;
 
-		if (p.x < 0 || p.y < 0 || p.x >= field_width || p.y >= field_height) {
+		if (p.x < 0 || p.y < 0 || p.x >= field_count_x || p.y >= field_count_y) {
 			i++;
 			continue;
 		}
@@ -161,7 +161,7 @@ new_position:
 	else if (ant->destination.y < ant->position.y)
 		next.y--;
 
-	if (next.y >= field_height || next.x >= field_width ||
+	if (next.y >= field_count_y || next.x >= field_count_x ||
 		next.y < 0 || next.x < 0) {
 		ant->destination = random_destination();
 		goto new_position;
@@ -202,10 +202,10 @@ void init_ants()
 	ants = malloc(sizeof(ant_t) * ants_count);
 	food = malloc(sizeof(food_t) * food_count);
 
-	fast_field = malloc(sizeof(int*) * field_width);
+	fast_field = malloc(sizeof(int*) * field_count_x);
 
-	for (i = 0; i < field_width; i++)
-		fast_field[i] = malloc(sizeof(field_t) * field_height);
+	for (i = 0; i < field_count_x; i++)
+		fast_field[i] = malloc(sizeof(field_t) * field_count_y);
 
 	// initialize delta-position array used for random food placement
 	i = 0;
@@ -217,8 +217,8 @@ void init_ants()
 	}
 
 	// init fast_access field
-	for (i = 0; i < field_width; i++) {
-		for (b = 0; b < field_height; b++) {
+	for (i = 0; i < field_count_x; i++) {
+		for (b = 0; b < field_count_y; b++) {
 			fast_field[i][b].ant = NULL;
 			fast_field[i][b].food = NULL;
 		}
@@ -237,7 +237,7 @@ void init_ants()
 
 new_ant_position:
 
-		if (n++ == field_width * field_height) {
+		if (n++ == field_count_x * field_count_y) {
 			printf("no place for ants :(\n");
 			exit(1);
 		}
@@ -253,7 +253,7 @@ new_ant_position:
 		n = 0;
 new_food_pos:
 
-		if (n++ == field_width * field_height) {
+		if (n++ == field_count_x * field_count_y) {
 			printf("no place for food :(\n");
 			exit(1);
 		}

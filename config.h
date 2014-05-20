@@ -1,8 +1,8 @@
 #ifndef __CONFIG_H__
 #define	__CONFIG_H__
 /***************************** CONFIG *****************************************/
-#define ANTS_COUNT	20	/* how many ants */
-#define FOOD_COUNT	100	/* how much food */
+#define ANTS_COUNT	50	/* how many ants */
+#define FOOD_COUNT	200	/* how much food */
 #define WAIT_TIME	5	/* how long wait an ant before it 
 					searches for new food */
 
@@ -11,6 +11,9 @@
 
 #define TICK_MS		500	/* how long takes simulation step */
 #define FPS		60	/* stable fps of the monitor */
+
+#define WINDOW_WIDTH	640	/* width of the window */
+#define WINDOW_HEIGHT	480	/* height of the window */
 /******************************************************************************/
 /* keycontrol - controlling the simulation		| state 0
  * (c) config						| state 1

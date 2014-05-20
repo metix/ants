@@ -176,7 +176,7 @@ void keycontrol(char key)
 			buffer[bi] = 0;
 			int tmp;
 			if (sscanf(buffer, "%d", &tmp) == 1) {
-				field_width = tmp;
+				field_count_x = tmp;
 				init_ants();
 				printf("field_width: %d\n", tmp);
 			}
@@ -197,7 +197,7 @@ void keycontrol(char key)
 			buffer[bi] = 0;
 			int tmp;
 			if (sscanf(buffer, "%d", &tmp) == 1) {
-				field_height = tmp;
+				field_count_y = tmp;
 				init_ants();
 				printf("field_height: %d\n", tmp);
 			}
