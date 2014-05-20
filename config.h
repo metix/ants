@@ -44,6 +44,7 @@
  * (p) play
  * (r) reset
  * (d) debug on/off
+ * (g) grid on/off
  */
 
 #endif

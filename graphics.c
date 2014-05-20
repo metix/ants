@@ -11,7 +11,7 @@
 
 float period = TICK_MS;
 float steps_per_frame;
-char debug = 1, stop;
+char debug = 1, grid = 1, stop;
 float fps, font_height, field_size;
 int win_height, win_width;
 
@@ -156,7 +156,8 @@ void render()
 
 	draw_food();
 	draw_ants();
-	//draw_grid();
+	if (grid)
+		draw_grid();
 	calculate_fps();
 	if (debug) {
 		draw_debug();
@@ -237,7 +238,7 @@ void init_graphics()
 	// dont draw backface of polygons
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
-	
+
 	glutDisplayFunc(render);
 	glutIdleFunc(simulate);
 	glutKeyboardFunc(keys_input);

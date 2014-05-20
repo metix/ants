@@ -49,6 +49,7 @@ extern void draw_field();
 extern float period;
 extern char stop;
 extern char debug;
+extern char grid;
 
 /* see control.c */
 extern void init_keycontrol();

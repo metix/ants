@@ -65,6 +65,9 @@ void short_key(char key)
 	case 'p':
 		play();
 		break;
+	case 'g':
+		grid = !grid;
+		break;
 	}
 }
 
